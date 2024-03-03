@@ -32,5 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
+### Config ###
+secret
+secret/*
 /src/main/resources/application-debug.properties
 /src/main/resources/application-release.properties

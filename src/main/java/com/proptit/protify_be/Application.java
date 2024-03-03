@@ -10,4 +10,13 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+//    @Bean
+//    public CommandLineRunner cmdRunner() {
+//        return (args) -> {
+//            SecretKey key = Jwts.SIG.HS256.key().build();
+//            System.out.println("-clgt-");
+//            System.out.println(Encoders.BASE64.encode(key.getEncoded()));
+//        };
+//    }
+
 }
