@@ -1,5 +1,6 @@
 package com.proptit.protify_be.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.proptit.protify_be.entity.UserEntity;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -24,6 +25,7 @@ public class UserUpdateInfoDto implements Serializable {
     @NotEmpty
     String lastName;
     @NotNull
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     LocalDate dateOfBirth;
     @NotNull
     UserEntity.Gender gender;

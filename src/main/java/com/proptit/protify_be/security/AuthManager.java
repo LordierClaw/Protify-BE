@@ -16,15 +16,17 @@ import java.util.Date;
 
 @Component
 public class AuthManager {
-    @Value("${jwt.secret}")
-    private String secret;
-    @Value("${jwt.access-token.validity}")
     @Getter
-    private long accessTokenValidity;
-    @Value("${jwt.refresh-token.validity}")
+    private final long accessTokenValidity;
     @Getter
-    private long refreshTokenValidity;
-    private final SecretKey secretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
+    private final long refreshTokenValidity;
+    private final SecretKey secretKey;
+
+    public AuthManager(@Value("${jwt.secret}") String secret, @Value("${jwt.access-token.validity}") long accessTokenValidity, @Value("${jwt.refresh-token.validity}") long refreshTokenValidity) {
+        this.accessTokenValidity = accessTokenValidity;
+        this.refreshTokenValidity = refreshTokenValidity;
+        this.secretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
+    }
 
     public String generateAccessToken(long id, String username) {
         Date issuedDate = new Date();
